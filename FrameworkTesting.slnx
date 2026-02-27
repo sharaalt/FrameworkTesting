@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FrameworkTesting/FrameworkTesting.vcxproj" Id="1dfb709f-b82a-4838-a98f-b3f283d61548" />
+</Solution>
