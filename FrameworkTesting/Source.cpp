@@ -23,16 +23,15 @@ int main() {
         std::cout << "Steamworks failed to initialize! (Is Steam running?)" << std::endl;
         return 1;
     }
+
     SDL_FRect rect;
     rect.x = 10;
     rect.y = 10;
     rect.h = 50;
     rect.w = 50;
+
     Vector2 position = { 2,2 };
     GameObject obj = GameObject(position, rect );
-    Vector2 posReturn = obj.GetPosition();
-
-    std::cout << posReturn.x << posReturn.y << "\n" << std::endl;
 
     bool shouldRender = true;
 
@@ -42,21 +41,24 @@ int main() {
 
     SDL_Event event;
 
-
-
     float speed = 300;
 
     Uint64 lastTime = SDL_GetTicks();
 
     while (shouldRender) {
+        SteamAPI_RunCallbacks();
+
         float dt = deltaTime(lastTime);
         const bool* key_states = SDL_GetKeyboardState(NULL);
 
-        if (key_states[SDL_SCANCODE_W]) rect.y -= speed * dt;
-        if (key_states[SDL_SCANCODE_S]) rect.y += speed * dt;
-        if (key_states[SDL_SCANCODE_A]) rect.x -= speed * dt;
-        if (key_states[SDL_SCANCODE_D]) rect.x += speed * dt;
+        Vector2 velocity;
 
+        if (key_states[SDL_SCANCODE_W]) velocity.y -= speed * dt;
+        if (key_states[SDL_SCANCODE_S]) velocity.y += speed * dt;
+        if (key_states[SDL_SCANCODE_A]) velocity.x -= speed * dt;
+        if (key_states[SDL_SCANCODE_D]) velocity.x += speed * dt;
+
+        obj.Update(velocity, dt);
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_QUIT) {
@@ -67,9 +69,6 @@ int main() {
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
-
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderFillRect(renderer, &rect);
 
         obj.Render(renderer);
 

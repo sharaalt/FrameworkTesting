@@ -4,18 +4,21 @@
 #include <SDL3/SDL.h>
 
 struct Vector2 {
-	float x;
-	float y;
+	float x = 0.0f;
+	float y = 0.0f;
 };
 
 class GameObject {
 	public:
 		GameObject(const Vector2& pos, SDL_FRect rect);
 		Vector2 GetPosition();
-		void SetPosition(int x, int y);
+		Vector2 GetVelocity();
+		void SetPosition(Vector2 position);
+		void Update(Vector2 velocity, float dt);
 		void Render(SDL_Renderer* renderer);
 	private:
 		Vector2 position;
+		Vector2 velocity;
 		SDL_FRect rect;
 };
 

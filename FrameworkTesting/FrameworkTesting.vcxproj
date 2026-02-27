@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\shara\source\repos\FrameworkTesting\FrameworkTesting\sdk\public;C:\Users\shara\source\repos\FrameworkTesting\FrameworkTesting\sdk\redistributable_bin\win64;C:\Users\shara\Downloads\SDL3-devel-3.4.2-VC\SDL3-3.4.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\shara\Downloads\SDL3-devel-3.4.2-VC\SDL3-3.4.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\SDL3-3.4.2\include;C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\SDL3-3.4.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,12 +109,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\SDL3-3.4.2\include;C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\sdk\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>steam_api64.lib;SDL3.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"C:\Users\shara\source\repos\FrameworkTesting\FrameworkTesting\sdk\redistributable_bin\win64"</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL3.lib;steam_api64.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\sdk\redistributable_bin\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
