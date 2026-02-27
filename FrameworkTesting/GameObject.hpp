@@ -2,11 +2,7 @@
 #define GAME_OBJECT_HPP
 
 #include <SDL3/SDL.h>
-
-struct Vector2 {
-	float x = 0.0f;
-	float y = 0.0f;
-};
+#include "Definitions.hpp"
 
 class GameObject {
 	public:

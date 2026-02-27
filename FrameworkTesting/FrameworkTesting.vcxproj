@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CameraObject.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -141,6 +142,8 @@
     <Text Include="steam_appid.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraObject.hpp" />
+    <ClInclude Include="Definitions.hpp" />
     <ClInclude Include="GameObject.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

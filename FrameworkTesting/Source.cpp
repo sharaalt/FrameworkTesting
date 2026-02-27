@@ -30,6 +30,8 @@ int main() {
     rect.h = 50;
     rect.w = 50;
 
+
+
     Vector2 position = { 2,2 };
     GameObject obj = GameObject(position, rect );
 
@@ -51,14 +53,14 @@ int main() {
         float dt = deltaTime(lastTime);
         const bool* key_states = SDL_GetKeyboardState(NULL);
 
-        Vector2 velocity;
+        Vector2 directionVector;
+        
+        if (key_states[SDL_SCANCODE_W]) directionVector.y -= 1;
+        if (key_states[SDL_SCANCODE_S]) directionVector.y += 1;
+        if (key_states[SDL_SCANCODE_A]) directionVector.x -= 1;
+        if (key_states[SDL_SCANCODE_D]) directionVector.x += 1;
 
-        if (key_states[SDL_SCANCODE_W]) velocity.y -= speed * dt;
-        if (key_states[SDL_SCANCODE_S]) velocity.y += speed * dt;
-        if (key_states[SDL_SCANCODE_A]) velocity.x -= speed * dt;
-        if (key_states[SDL_SCANCODE_D]) velocity.x += speed * dt;
-
-        obj.Update(velocity, dt);
+        obj.Update(directionVector, dt);
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_QUIT) {

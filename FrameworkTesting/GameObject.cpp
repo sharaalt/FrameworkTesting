@@ -17,19 +17,22 @@ void GameObject::SetPosition(Vector2 position) {
 }
 
 void GameObject::Update(Vector2 vel, float dt) {
-	float friction = SDL_powf(0.95f, dt);
-	float maxSpeed = 500.0f;
-
-	SDL_clamp(vel.x, 0, maxSpeed);
-	SDL_clamp(vel.y, 0, maxSpeed);
-
+	this->velocity.x += vel.x * 500.0f* dt;
+	this->velocity.y += vel.y * 500.0f * dt;
+	
+	float friction = SDL_powf(0.1f, dt);
 	this->velocity.x *= friction;
 	this->velocity.y *= friction;
 
-	this->position.x += vel.x * dt;
-	this->position.y += vel.y * dt;
+	this->position.x += this->velocity.x * dt;
+	this->position.y += this->velocity.y * dt;
 
-	this->velocity = vel;
+	if (this->velocity.Magnitude() < 10.0f) {
+		if (velocity.x and velocity.y == 0) return;
+
+		velocity.x = 0; 
+		velocity.y = 0;
+	}
 
 	this->SetPosition(this->position);
 }
