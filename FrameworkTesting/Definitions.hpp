@@ -1,10 +1,15 @@
-#include <SDL3/SDL.h>
+#ifndef DEFINITIONS_HPP 
+#define DEFINITIONS_HPP 
+
+#include <cmath>
 
 struct Vector2 {
     float x = 0.0f;
     float y = 0.0f;
 
     float Magnitude() const {
-        return SDL_sqrtf(static_cast<float>((x * x) + (y * y)));
+        return std::sqrt(((x * x) + (y * y)));
     }
 };
+
+#endif // DEFINITIONS_HPP

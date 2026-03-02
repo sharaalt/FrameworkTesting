@@ -16,6 +16,9 @@
     <Filter Include="Header Files\Definitions">
       <UniqueIdentifier>{a9c04afb-7682-49db-b360-89073c27e901}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\TemplateObjects">
+      <UniqueIdentifier>{f2ad8a68-d54a-4baa-beb6-5c031de57e9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -27,19 +30,34 @@
     <ClCompile Include="CameraObject.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerObject.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="steam_appid.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CameraObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Definitions.hpp">
       <Filter>Header Files\Definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerObject.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>Header Files\TemplateObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="EventObject.hpp">
+      <Filter>Header Files\TemplateObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

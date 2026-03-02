@@ -71,8 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\shara\source\repos\FrameworkTesting\FrameworkTesting\sdk\public;C:\Users\shara\source\repos\FrameworkTesting\FrameworkTesting\sdk\redistributable_bin\win64;C:\Users\shara\Downloads\SDL3-devel-3.4.2-VC\SDL3-3.4.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\SDL3-3.4.2\include;C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\SDL3-3.4.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)include\SDL3;$(SolutionDir)include\public;$(LibraryPath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\SDL3;$(SolutionDir)include\steam;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)include\SDL3;$(SolutionDir)include\public;$(LibraryPath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)include\SDL3;$(SolutionDir)include\steam;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,9 +118,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL3.lib;steam_api64.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\sdk\redistributable_bin\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)lib\SDL3.lib;$(SolutionDir)lib\steam_api64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(projectDir)include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)bin" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -124,18 +131,27 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\SDL3-3.4.2\include;C:\Users\shara\source\repos\sharaalt\FrameworkTesting\FrameworkTesting\sdk\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(projectDir)include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)lib\SDL3.lib;$(SolutionDir)lib\steam_api64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)bin" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CameraObject.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +160,10 @@
   <ItemGroup>
     <ClInclude Include="CameraObject.hpp" />
     <ClInclude Include="Definitions.hpp" />
+    <ClInclude Include="EventObject.hpp" />
     <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="InputHandler.hpp" />
+    <ClInclude Include="PlayerObject.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
